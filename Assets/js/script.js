@@ -1,27 +1,24 @@
 var currentDay = $("#currentDay");
 var timeBlocks = $(".time-block");
+var saveButton = $('.saveBtn');
 
 //date field 
 var date = moment().format("dddd, MMMM Do");
 currentDay.text(date);
 
+var currentTime = moment().format('H');
 
-var saveButton = document.querySelector('.saveBtn');
-
-
-
+//setting time block colors
 timeBlocks.each(function(){
 
-    var currentTime = moment().format('HH');
-
-    if($(this).attr('id') === currentTime){
-        $(this).addClass('present');
+    if($(this).attr('id') == currentTime){
+        $(this).addClass('present').removeClass("past future");
     }
-    else if ($(this).attr('id') >= currentTime) {
-        $(this).addClass('past');
+    if ($(this).attr('id') < currentTime) {
+        $(this).addClass('past').removeClass("present future");
     }
-    else {
-        $(this).addClass('future');
+    if ($(this).attr('id') > currentTime) {
+        $(this).addClass('future').removeClass("past present");
     }
 });
 
@@ -29,7 +26,7 @@ function renderDescriptions() {
     var description = localStorage.getItem("description");
 }
 
-saveButton.addEventListener("click", function(event) {
+saveButton("click", function(event) {
     event.preventDefault();
 
     var description = document.querySelector(".description").value;
