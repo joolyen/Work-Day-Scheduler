@@ -1,6 +1,7 @@
 var currentDay = $("#currentDay");
 var timeBlocks = $(".time-block");
 var saveButton = $('.saveBtn');
+var description = []; //need to be an array
 
 //date field 
 var date = moment().format("dddd, MMMM Do");
@@ -10,20 +11,22 @@ var currentTime = moment().format('H');
 
 //setting time block colors
 timeBlocks.each(function(){
+    //creating a var to parse the id for multiple if statements
+    var hour = parseInt($(this).attr('id'));
 
-    if($(this).attr('id') == currentTime){
-        $(this).addClass('present').removeClass("past future");
+    if(hour == currentTime){
+        $(this).addClass('present').removeClass("future past");
     }
-    if ($(this).attr('id') < currentTime) {
-        $(this).addClass('past').removeClass("present future");
+    if(hour < currentTime) {
+        $(this).addClass('past').removeClass("future present");
     }
-    if ($(this).attr('id') > currentTime) {
+    if(hour > currentTime) {
         $(this).addClass('future').removeClass("past present");
     }
 });
 
 function renderDescriptions() {
-    var description = localStorage.getItem("description");
+    description = localStorage.getItem("description");
 }
 
 saveButton("click", function(event) {
