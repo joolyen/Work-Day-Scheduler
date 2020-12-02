@@ -1,8 +1,16 @@
+var currentDay = $("#currentDay");
+var timeBlocks = $(".time-block");
+
+//date field 
+var date = moment().format("dddd, MMMM Do");
+currentDay.text(date);
+
+
 var saveButton = document.querySelector('.saveBtn');
 
-$("#currentDay").text(moment().format("dddd, MMMM Do"));
 
-$(".time-block").each(function(){
+
+timeBlocks.each(function(){
 
     var currentTime = moment().format('HH');
 
@@ -21,7 +29,7 @@ function renderDescriptions() {
     var description = localStorage.getItem("description");
 }
 
-saveBuuton.addEventListener("click", function(event) {
+saveButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     var description = document.querySelector(".description").value;
