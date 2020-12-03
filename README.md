@@ -1,10 +1,9 @@
 ## Work Day Scheduler
+#### https://github.com/joolyen/Work-Day-Scheduler
+#### https://joolyen.github.io/Work-Day-Scheduler/
 
 ## Description
 This is a simple work day planner created for users to save their daily agenda. 
-
-https://github.com/joolyen/Work-Day-Scheduler
-https://joolyen.github.io/Work-Day-Scheduler/
 
 ## Technologies Used: 
 HTML, CSS, javascript, local storage, moment.js, bootstrap, font awesome and jQuery. 
